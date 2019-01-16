@@ -8,29 +8,15 @@
 
 import sys
 import cv2
-from PyQt5 import QtCore,QtGui,QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QMessageBox
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-
+from video_predict import *
 class Ui_MainWindow(object):
     def __init__(self):
         self.video_recording_btn=None
-        #self.label=None
         self.open_cam=None
         self.close_cam=None
-        self.open_danger=None
-        self.close_danger=None
-        self.lcd_class_1=None
-        self.lcd_class_2=None
-        self.lcd_class_3=None
-        self.lcd_class_4=None
-        self.lcd_class_5=None
-        self.lcd_class_6=None
-        self.lcd_class_7=None
-        self.lcd_class_8=None
-        self.lcd_class_9=None
-        self.lcd_class_10=None
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -38,7 +24,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(1071, 680))
         MainWindow.setMaximumSize(QtCore.QSize(1071, 680))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("/UI/image/github.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("D:/Google chrome 下载/authenticate-using-face-recognition-master/icon/app_icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -63,10 +49,9 @@ class Ui_MainWindow(object):
         self.groupBox_3.setObjectName("groupBox_3")
         self.label = QtWidgets.QLabel(self.groupBox_3)
         self.label.setGeometry(QtCore.QRect(20, 30, 121, 81))
+        self.label.setStyleSheet("image: url(:/image/image/safe.jpg);")
         self.label.setText("")
         self.label.setObjectName("label")
-        self.label.setPixmap(QtGui.QPixmap(""))
-        self.label.setScaledContents(True)
         self.groupBox_2 = QtWidgets.QGroupBox(self.frame_2)
         self.groupBox_2.setGeometry(QtCore.QRect(10, 10, 150, 191))
         self.groupBox_2.setObjectName("groupBox_2")
@@ -130,7 +115,7 @@ class Ui_MainWindow(object):
         self.Logo_label.setGeometry(QtCore.QRect(870, 10, 54, 41))
         self.Logo_label.setInputMethodHints(QtCore.Qt.ImhNone)
         self.Logo_label.setText("")
-        self.Logo_label.setPixmap(QtGui.QPixmap("UI/image/github.png"))
+        self.Logo_label.setPixmap(QtGui.QPixmap("D:/Google chrome 下载/authenticate-using-face-recognition-master/icon/github.png"))
         self.Logo_label.setScaledContents(True)
         self.Logo_label.setObjectName("Logo_label")
         self.name_label = QtWidgets.QLabel(self.frame_5)
@@ -203,3 +188,38 @@ class Ui_MainWindow(object):
         self.label_class_8.setText(_translate("MainWindow", "拿后面东西"))
         self.label_class_9.setText(_translate("MainWindow", "打理头部"))
 
+class Mywindow(QMainWindow,Ui_MainWindow):
+    def __init__(self,formObj): 
+        super(Mywindow, self).__init__()
+        self.setupUi(formObj)
+        self.open_cam.clicked.connect(self.open_camer)
+        self.close_cam.clicked.connect(self.close_camer)
+        self.cap=None
+    def open_camer(self):
+        self.timer_camera = QTimer(self)
+        #self.cap = cv2.VideoCapture(1)
+        cam_model, cam_weights = cam_model(resnet50.ResNet50, res_input_shape, resnet50.preprocess_input, 10, 'my_model_weights.h5')
+        generate_video_with_classfication(cam_model, (224, 224), 'train_deal_video.avi', cam_weights, generate_video_name='output.avi')
+        self.timer_camera.timeout.connect(self.show_cam)
+        self.timer_camera.start(10)
+    def close_camer(self):
+        self.cap.release()
+        cv2.destroyAllWindows()
+        self.video_feed.setPixmap(QPixmap(""))
+
+    def show_cam(self):
+        success, frame=self.cap.read()
+        if success:
+            show = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            print(show.shape[1],show.shape[0])
+            showImage = QImage(show.data, show.shape[1], show.shape[0], QImage.Format_RGB888)
+            self.video_feed.setScaledContents (True)
+            self.video_feed.setPixmap(QPixmap.fromImage(showImage))     
+            self.timer_camera.start(10)
+    
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    formObj=QtWidgets.QMainWindow()
+    ui = Mywindow(formObj)    
+    formObj.show()
+    sys.exit(app.exec())

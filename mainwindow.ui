@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1071</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1071</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1071</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>异常驾驶行为识别系统</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>D:/Google chrome 下载/authenticate-using-face-recognition-master/icon/app_icon.jpg</normaloff>D:/Google chrome 下载/authenticate-using-face-recognition-master/icon/app_icon.jpg</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>40</y>
+      <width>871</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <widget class="QLabel" name="video_feed">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>871</width>
+       <height>421</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+  border:2px solid rgb(0, 0, 0);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>171</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>220</y>
+       <width>150</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>预警</string>
+     </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>121</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/image/image/safe.jpg);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>150</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>功能栏</string>
+     </property>
+     <widget class="QPushButton" name="open_cam">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>120</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>进行识别</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="open_danger">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>120</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>开启预警</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="close_danger">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>138</y>
+        <width>120</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>关闭预警</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="close_cam">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>370</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>关闭摄像头</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>460</y>
+      <width>1041</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <widget class="QLCDNumber" name="lcd_class_5">
+     <property name="geometry">
+      <rect>
+       <x>920</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_5">
+     <property name="geometry">
+      <rect>
+       <x>840</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>左手打电话</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>右手打字</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_1">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>安全驾驶</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcd_class_1">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcd_class_2">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="llabel_class_3">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>右手打电话</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcd_class_3">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_4">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>左手打字</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcd_class_4">
+     <property name="geometry">
+      <rect>
+       <x>710</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>580</y>
+      <width>1041</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <widget class="QPushButton" name="exit_btn">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>20</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Exit</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Logo_label">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>10</y>
+       <width>54</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhNone</set>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>D:/Google chrome 下载/authenticate-using-face-recognition-master/icon/github.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="name_label">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>20</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>imeGao伯爵</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>520</y>
+      <width>1041</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <widget class="QLCDNumber" name="lcd_class_10">
+     <property name="geometry">
+      <rect>
+       <x>920</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_10">
+     <property name="geometry">
+      <rect>
+       <x>840</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>和乘客交流</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_7">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>拿饮料喝</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_6">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>调收音机</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcd_class_6">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcd_class_7">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_8">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>拿后面东西</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcd_class_8">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_class_9">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>20</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>打理头部</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcd_class_9">
+     <property name="geometry">
+      <rect>
+       <x>710</x>
+       <y>22</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menu_bar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1071</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
